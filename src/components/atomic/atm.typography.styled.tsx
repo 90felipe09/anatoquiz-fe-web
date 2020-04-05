@@ -2,6 +2,7 @@ import styled from 'styled-components';
 import { styleguide } from '../styleguide';
 
 export const H1 = styled.h1`
+  margin: 0;
   font-size: ${styleguide.typography.H1};
   font-family: ${styleguide.fonts.primary};
   font-weight: normal;

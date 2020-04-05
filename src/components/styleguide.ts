@@ -62,7 +62,7 @@ export const styleguide = {
     timeBoxMiniature: '42px',
     profilePhoto: '96px',
     modalWidth: '256px',
-    iconSize: '62px',
+    iconSize: '42px',
   },
 
   borderRadius: '4px',
