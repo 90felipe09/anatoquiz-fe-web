@@ -1,0 +1,57 @@
+{
+    "env": {
+        "browser": true,
+        "es6": true
+    },
+    "extends": [
+        "eslint:recommended",
+        "plugin:@typescript-eslint/eslint-recommended",
+        "plugin:@typescript-eslint/recommended",
+        "plugin:@typescript-eslint/recommended-requiring-type-checking",
+        "plugin:react/recommended"
+    ],
+    "globals": {
+        "Atomics": "readonly",
+        "SharedArrayBuffer": "readonly"
+    },
+    "parser": "@typescript-eslint/parser",
+    "parserOptions": {
+        "ecmaFeatures": {
+          "jsx": true
+        },
+        "ecmaVersion": 2018,
+        "sourceType": "module",
+        "project": "./tsconfig.json"
+      },
+    "settings": {
+        "import/extensions": [".js", ".jsx", ".ts", ".tsx", ".mjs"]
+    },
+    "plugins": [
+        "react",
+        "@typescript-eslint"
+    ],
+    "rules": {
+        "indent": ["error", 2],
+        "linebreak-style": ["error", "unix"],
+        "quotes": ["error", "single"],
+        "semi": ["error", "always"],
+        "@typescript-eslint/explicit-function-return-type": 0,
+        "@typescript-eslint/no-explicit-any": 0,
+        "react/prop-types": 0,
+        "react-native/no-raw-text": 0,
+        "@typescript-eslint/await-thenable": 0,
+        "@typescript-eslint/camelcase": 0,
+        "@typescript-eslint/no-misused-promises": [
+        "error",
+        {
+            "checksVoidReturn": false
+        }
+        ],
+        "react/display-name": 0,
+        "react-native/split-platform-components": 0,
+        "@typescript-eslint/no-namespace": 0,
+        "@typescript-eslint/no-use-before-define": 0,
+        "@typescript-eslint/prefer-regexp-exec": 0,
+        "@typescript-eslint/prefer-includes": 0
+    }
+}
