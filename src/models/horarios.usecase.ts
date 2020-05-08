@@ -1,4 +1,4 @@
-import { getHorariosArgumentType, getHorarios } from 'data/horarios.datasource';
+import { GetHorariosArgumentType, getHorarios } from 'data/horarios.datasource';
 import { adaptHorarios } from 'pipe/horarios.adapter';
 
 export enum TimeBoxStateEnum {
@@ -101,7 +101,7 @@ export const scheduleInitializer: ScheduleDataType = {
   },
 };
 
-export const horariosUseCase = async (getHorariosArgumento: getHorariosArgumentType): Promise<ScheduleDataType> => {
+export const horariosUseCase = async (getHorariosArgumento: GetHorariosArgumentType): Promise<ScheduleDataType> => {
   const datasource = await getHorarios(getHorariosArgumento);
   const translated = adaptHorarios(datasource);
   return translated;

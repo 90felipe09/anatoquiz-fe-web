@@ -1,4 +1,4 @@
-import { getHorariosReturnType, HorarioDeAteType } from 'data/horarios.datasource';
+import { GetHorariosReturnType, HorarioDeAteType } from 'data/horarios.datasource';
 import {
   ScheduleDataType,
   scheduleInitializer,
@@ -22,10 +22,10 @@ export const deAteToTimeHourInterface = (deAte: HorarioDeAteType): TimeHourInter
   return result;
 };
 
-export const adaptHorarios = (datasource: getHorariosReturnType[]): ScheduleDataType => {
+export const adaptHorarios = (datasource: GetHorariosReturnType[]): ScheduleDataType => {
   const result: ScheduleDataType = scheduleInitializer;
 
-  const translateTimeItem = (timeItem: getHorariosReturnType) => {
+  const translateTimeItem = (timeItem: GetHorariosReturnType) => {
     const weekDay = weekDayCodeToEnum[timeItem.idSemana];
     if (timeItem.status === statusEnum.CONFIRMADO) {
       const timeHour = deAteToTimeHourInterface(timeItem.deAte);

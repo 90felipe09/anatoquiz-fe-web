@@ -1,0 +1,27 @@
+Enunciado: Paciente com neoplasia compressiva medular apresenta déficit de tato discriminativo, propriocepção consciente e sensibilidade vibratória, foi observado que há lesão nessa estrutura a seguir, quem é ela?
+#
+Categoria: Sistema Nervoso
+#
+Tipo: Contextual
+#
+Tema: SNC - medula
+#
+Alternativas: A, B, C, D
+#
+A: Corno posterior da subst. cinzenta
+#
+B: Fascículo Cuneiforme
+#
+C: Trato espinocerebelar anterior
+#
+D: Fascículo grácil
+#
+Alternativa Correta: B
+#
+Saiba Mais: Está apontado o Fascículo Cuneiforme, que faz parte do funículo posterior. Este por sua vez é composto do Fascículo grácil (medial) e cuneiforme (lateral) e são responsáveis por transmitir informação do tato discriminativo, propriocepção consciente e sensibilidade vibratória.
+#
+Imagem: seta para fascículo cuneiforme medula corte tranversal sem números retirado do semio neuro do Gusmão.png
+#
+Bibliografia:
+GUSMÃO, Sebastião Silva; CAMPOS, Gilberto Belisário; TEIXEIRA, Antônio Lúcio. Exame neurológico: bases anatomofuncionais. 2. ed. Rio de Janeiro, RJ: Revinter, 2007. 353 p. ISBN 8537201015
+KEITH L. MOORE, ARTHUR F. DALLEY, ANNE M. R. AGUR - Anatomia Orientada Para A Clínica - 7ª Ed. 2014 - Guanabara Koogan

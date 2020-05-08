@@ -1,10 +1,7 @@
-import React, { useState } from 'react';
+import { HBox, HBoxItem, Root, VSeparator } from 'components/atomic/obj.grid.components';
+import { MenuOption, NavigationBar } from 'components/atomic/org.navbar.component';
+import React from 'react';
 import { PrimaryButton } from '../components/atomic/atm.buttons.component';
-import { H1 } from '../components/atomic/atm.typography.styled';
-import { DarkenedFilter, Modal } from '../components/atomic/org.modal.component';
-import { weekDayEnum } from 'models/horarios.usecase';
-import { NavigationBar, MenuOption } from 'components/atomic/org.navbar.component';
-import { Root, VSeparator, HBox, HBoxItem } from 'components/atomic/obj.grid.components';
 
 export default {
   title: 'Navigation Bar',
@@ -18,10 +15,20 @@ export const NavigationBarStory = () => {
         <VSeparator />
         <HBox>
           <HBoxItem>
-            <PrimaryButton text='f' onClick={() => {}} />
+            <PrimaryButton
+              text='f'
+              onClick={() => {
+                console.log();
+              }}
+            />
           </HBoxItem>
           <HBoxItem>
-            <PrimaryButton text='f' onClick={() => {}} />
+            <PrimaryButton
+              text='f'
+              onClick={() => {
+                console.log();
+              }}
+            />
           </HBoxItem>
         </HBox>
         <VSeparator />
@@ -31,7 +38,9 @@ export const NavigationBarStory = () => {
   const menuOptions: MenuOption[] = [
     {
       optionName: 'Login',
-      onClick: () => {},
+      onClick: () => {
+        console.log('as');
+      },
       expandable: true,
       content: <LoginContentOption />,
     },

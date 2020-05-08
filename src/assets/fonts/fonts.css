@@ -29,3 +29,8 @@
   font-style: normal;
   font-display: fallback;
 }
+
+body{
+  margin: 0px;
+  overflow: hidden;
+}

@@ -1,24 +1,16 @@
 import React from 'react';
 import { H1 } from 'components/atomic/atm.typography.styled';
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
+import { QuestionPage } from 'app/pages/question.page';
+import styled from 'styled-components';
+import { AboutPage } from 'app/pages/about.page';
 
 function App() {
   return (
     <Router>
       <Switch>
-        <Route path='/consultorio/:id/:room'>
-          <H1>Sala</H1>
-        </Route>
-        <Route path='/consultorio/:id'>
-        </Route>
-        <Route path='/:id/:room'>
-          <H1>Sala</H1>
-        </Route>
-        <Route path='/:id'>
-        </Route>
-        <Route path='/'>
-          <H1>Home</H1>
-        </Route>
+        <Route path='/sobre' component={AboutPage} />
+        <Route path='/' component={QuestionPage} />
       </Switch>
     </Router>
   );

@@ -24,10 +24,10 @@ export const styleguide = {
   },
 
   colors: {
-    primary: '#76BC1C',
+    primary: '#133E79',
     secondary: '#57A8FF',
     decorative: '#032B55',
-    callToAction: '#76BC1C',
+    callToAction: '#133E79',
 
     unavailable: '#B6B6B6',
     occupied: 'rgba(229,0,0,0.5)',
@@ -58,11 +58,16 @@ export const styleguide = {
   },
 
   sizes: {
+    NavBar: '64px',
     timeBox: '84px',
     timeBoxMiniature: '42px',
     profilePhoto: '96px',
     modalWidth: '256px',
-    iconSize: '42px',
+    iconSize: 42,
+    feedbackIconSize: '84px',
+    questionCardWidth: '320px',
+    buttonHeight: '42px;',
+    ContentHeight: '240px'
   },
 
   borderRadius: '4px',

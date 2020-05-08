@@ -7,5 +7,5 @@ export const endpoints = {
   twillio: '/twillio',
   medico: '/medico',
   horarios: '/horarios',
-  agendamento: '/agendamento'
-}
+  agendamento: '/agendamento',
+};
