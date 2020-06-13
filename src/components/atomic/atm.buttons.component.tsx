@@ -8,10 +8,12 @@ export interface ButtonInterface {
   disabled?: boolean;
 }
 
+
 const StyledPrimaryButton = styled.button`
   outline: 0;
   flex: 1;
   flex-direction: row;
+  border-radius: ${styleguide.spacing.small};
   align-self: center;
   background-color: ${styleguide.colors.callToAction};
   color: ${styleguide.colors.white};

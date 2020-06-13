@@ -8,7 +8,7 @@ export const styleguide = {
     H1: '24px',
     H2: '18px',
     H3: '18px',
-    H4: '18px',
+    H4: '24px',
     H5: '18px',
 
     Body: '14px',
@@ -64,10 +64,15 @@ export const styleguide = {
     profilePhoto: '96px',
     modalWidth: '256px',
     iconSize: 42,
+    contactPhoto: '64px',
     feedbackIconSize: '84px',
     questionCardWidth: '320px',
     buttonHeight: '42px;',
-    ContentHeight: '240px'
+    ContentHeight: '240px',
+    images: '120px',
+    avatar: '160px',
+    progressStatus: '48px',
+    progressFrame: '64px'
   },
 
   borderRadius: '4px',

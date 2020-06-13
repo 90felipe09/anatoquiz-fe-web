@@ -6,6 +6,7 @@ import { StyledIcon } from './atm.icon.components';
 import { Logo } from './atm.logo.component';
 import { H2 } from './atm.typography.styled';
 import { HBox, HBoxItem, VBox } from './obj.grid.components';
+import { useHistory } from 'react-router-dom';
 
 //Replicate to template
 
@@ -26,6 +27,7 @@ const StyledNavigationBar = styled.nav`
 
 export const NavigationBar: React.FC<NavigationBarProps> = props => {
   const [openedMenu, setOpenedMenu] = useState(false);
+  const history = useHistory();
 
   const toggleMenuOpen = () => {
     setOpenedMenu(!openedMenu);
@@ -35,7 +37,7 @@ export const NavigationBar: React.FC<NavigationBarProps> = props => {
     <HBox>
       <StyledNavigationBar>
         <HBox hAlign='center'>
-          <Logo logo={props.logo} />
+          <Logo logo={props.logo} onClick={() => history.push('/')}/>
           <HBoxItem hAlign='center' vAlign='flex-end'>
             <StyledIcon clickable={true} source={Menu} onClick={toggleMenuOpen} />
           </HBoxItem>
@@ -48,8 +50,9 @@ export const NavigationBar: React.FC<NavigationBarProps> = props => {
 
 export interface MenuOption {
   optionName: string;
-  onClick: () => void;
+  redirectTo?: string;
   expandable?: boolean;
+  onClick?: () => void;
   content?: any;
 }
 
@@ -69,9 +72,10 @@ const StyledDropDownMenuItemNav = styled.span`
 
 const DropDownMenuNavItem: React.FC<MenuOption> = props => {
   const [expanded, setExpanded] = useState(false);
-
+  const history = useHistory();
   const handleOnClick = () => {
-    props.onClick();
+    props.onClick && props.onClick();
+    props.redirectTo && history.push(props.redirectTo);
     setExpanded(!expanded);
   };
 
@@ -92,8 +96,9 @@ const DropDownMenuNav: React.FC<DropDownMenuProps> = props => {
     <DropDownMenuNavItem
       expandable={menuItem.expandable}
       content={menuItem.content}
-      onClick={menuItem.onClick}
+      redirectTo={menuItem.redirectTo}
       optionName={menuItem.optionName}
+      onClick={menuItem.onClick}
     />
   ));
   return <VBox>{menuItems}</VBox>;

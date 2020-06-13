@@ -23,8 +23,7 @@ export const H3 = styled.h3`
 export const H4 = styled.h4`
   font-size: ${styleguide.typography.H4};
   font-family: ${styleguide.fonts.primary};
-  text-transform: uppercase;
-  color: ${styleguide.colors.secondary};
+  color: ${styleguide.colors.primary};
 `;
 
 export const H5 = styled.h5`

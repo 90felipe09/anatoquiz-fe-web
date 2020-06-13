@@ -34,25 +34,25 @@ const StyledQuestionCard = styled.span`
 `;
 
 export interface QuestionCardProps {
-  status: QuestionCardStatusEnum;
-  question: QuestionCardDataProps;
-  knowMore: QuestionCardKnowMoreDataProps;
+  status?: QuestionCardStatusEnum;
+  question?: QuestionCardDataProps;
+  knowMore?: QuestionCardKnowMoreDataProps;
   onChooseAlternative: (answer: string) => void;
   onKnowMore: () => void;
   onNextQuestion: () => void;
 }
 
 export interface QuestionCardContentProps {
-  enunciado: string;
-  alternativas: AlternativesInterface;
-  imagem: string;
+  enunciado?: string;
+  alternativas?: AlternativesInterface;
+  imagem?: string;
   onChooseAlternative: (answer: string) => void;
 }
 
 export interface QuestionCardDataProps {
-  enunciado: string;
-  alternativas: AlternativesInterface;
-  imagem: string;
+  enunciado?: string;
+  alternativas?: AlternativesInterface;
+  imagem?: string;
 }
 
 export interface AlternativesInterface {
@@ -60,14 +60,14 @@ export interface AlternativesInterface {
 }
 
 export interface QuestionCardKnowMoreProps {
-  saibaMais: string;
-  bibliografia: string[];
+  saibaMais?: string;
+  bibliografia?: string[];
   onNextQuestion: () => void;
 }
 
 export interface QuestionCardKnowMoreDataProps {
-  saibaMais: string;
-  bibliografia: string[];
+  saibaMais?: string;
+  bibliografia?: string[];
 }
 
 export enum QuestionCardStatusEnum {
@@ -82,9 +82,9 @@ export const QuestionCard: React.FC<QuestionCardProps> = props => {
     <StyledQuestionCard status={props.status}>
       {props.status === QuestionCardStatusEnum.question && (
         <QuestionCardContent
-          alternativas={props.question.alternativas}
-          enunciado={props.question.enunciado}
-          imagem={props.question.imagem}
+          alternativas={props.question?.alternativas}
+          enunciado={props.question?.enunciado}
+          imagem={props.question?.imagem}
           onChooseAlternative={props.onChooseAlternative}
         />
       )}
@@ -94,8 +94,8 @@ export const QuestionCard: React.FC<QuestionCardProps> = props => {
       {props.status === QuestionCardStatusEnum.knowMore && (
         <QuestionCardKnowMore
           onNextQuestion={props.onNextQuestion}
-          bibliografia={props.knowMore.bibliografia}
-          saibaMais={props.knowMore.saibaMais}
+          bibliografia={props.knowMore?.bibliografia}
+          saibaMais={props.knowMore?.saibaMais}
         />
       )}
     </StyledQuestionCard>
@@ -104,7 +104,7 @@ export const QuestionCard: React.FC<QuestionCardProps> = props => {
 
 // Component
 const QuestionCardContent: React.FC<QuestionCardContentProps> = props => {
-  const Alternatives = Object.values(props.alternativas).map(alternative => {
+  const Alternatives = props.alternativas && Object.values(props.alternativas).map(alternative => {
     const handleClick = () => {
       props.onChooseAlternative(alternative);
     };
@@ -135,7 +135,7 @@ const QuestionCardContent: React.FC<QuestionCardContentProps> = props => {
 };
 
 interface StyledFeedbackCardProps {
-  status: QuestionCardStatusEnum;
+  status?: QuestionCardStatusEnum;
 }
 
 const StyledFeedbackCard = styled.span`
@@ -187,7 +187,7 @@ const QuestionCardCorrectFeedback: React.FC<FeedbackCardprops> = props => {
 };
 
 const QuestionCardKnowMore: React.FC<QuestionCardKnowMoreProps> = props => {
-  const bibliografia = props.bibliografia.map(element => <DD>{element}</DD>);
+  const bibliografia = props.bibliografia && props.bibliografia.map(element => <DD>{element}</DD>);
   return (
     <VBox>
       <ScrollableContent>

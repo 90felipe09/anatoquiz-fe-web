@@ -12,3 +12,7 @@ export const ScrollableContent = styled.section`
   overflow-y: scroll;
   max-height: ${styleguide.sizes.ContentHeight};
 `;
+export const ListContent = styled.section`
+  overflow-y: scroll;
+  max-height: 480px;
+`;
