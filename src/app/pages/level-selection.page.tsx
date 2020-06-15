@@ -1,5 +1,5 @@
 import { Root, HBox, VSeparator, HBoxItem, HBoxSeparator } from 'components/atomic/obj.grid.components';
-import React, { useState } from 'react';
+import React, { useState, useContext, useEffect } from 'react';
 import { NavigationBar, MenuOption } from 'components/atomic/org.navbar.component';
 import { BodyContent, ListContent } from 'components/atomic/atm.wrapper.component';
 import {
@@ -21,11 +21,13 @@ import {
   LevelCardProps,
   LevelCard,
 } from 'app/components/level/progress-circle.component';
+import { GlobalState } from 'app/components/global-state/global-state.provider';
 
 export interface LevelSelectionPageProps {}
 
 export const LevelSelectionPage: React.FC<LevelSelectionPageProps> = props => {
   const history = useHistory();
+  const context = useContext(GlobalState);
 
   const levels: LevelCardProps[] = [
     { status: ProgressStatusEnum.blocked, tema: 'Anatomia', mundo: 'Cardiovascular', fase: '6' },
@@ -35,7 +37,9 @@ export const LevelSelectionPage: React.FC<LevelSelectionPageProps> = props => {
     { status: ProgressStatusEnum.new, tema: 'Anatomia', mundo: 'Cardiovascular', fase: '2' },
     { status: ProgressStatusEnum.cleared, tema: 'Anatomia', mundo: 'Cardiovascular', fase: '1' },
   ];
-
+  useEffect(() => {
+    !context.token && history.push('/');
+  }, []);
   const challenge: string = 'Cardiovascular';
 
   const handleLevelSelection = (level: LevelCardProps) => {

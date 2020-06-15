@@ -40,7 +40,7 @@ export const QuestionCardStory = () => {
 
   return (
     <Root>
-      <NavigationBar menuOptions={menuOptions} logo='LOGO' />
+      <NavigationBar authMenuOptions={menuOptions} menuOptions={menuOptions} logo='LOGO' />
       <BodyContent>
         <HBox hAlign='center'>
           <QuestionCard

@@ -56,7 +56,7 @@ export const NavigationBarStory = () => {
 
   return (
     <Root>
-      <NavigationBar menuOptions={menuOptions} logo='LOGO' />
+      <NavigationBar authMenuOptions={menuOptions} menuOptions={menuOptions} logo='LOGO' />
     </Root>
   );
 };

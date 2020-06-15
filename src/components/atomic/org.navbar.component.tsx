@@ -1,18 +1,20 @@
 import Menu from 'assets/icon/Menu.png';
 import { styleguide } from 'components/styleguide';
-import React, { useState } from 'react';
+import React, { useState, useContext } from 'react';
 import styled from 'styled-components';
 import { StyledIcon } from './atm.icon.components';
 import { Logo } from './atm.logo.component';
 import { H2 } from './atm.typography.styled';
 import { HBox, HBoxItem, VBox } from './obj.grid.components';
 import { useHistory } from 'react-router-dom';
+import { GlobalState } from 'app/components/global-state/global-state.provider';
 
 //Replicate to template
 
 export interface NavigationBarProps {
   logo: string;
   menuOptions: MenuOption[];
+  authMenuOptions: MenuOption[];
 }
 
 const StyledNavigationBar = styled.nav`
@@ -27,22 +29,33 @@ const StyledNavigationBar = styled.nav`
 
 export const NavigationBar: React.FC<NavigationBarProps> = props => {
   const [openedMenu, setOpenedMenu] = useState(false);
+  const context = useContext(GlobalState);
   const history = useHistory();
 
   const toggleMenuOpen = () => {
     setOpenedMenu(!openedMenu);
   };
 
+  const logOut = () => {
+    context.token = '';
+  }
+  
+  props.authMenuOptions[props.authMenuOptions.length - 1].onClick = logOut;
+
   return (
     <HBox>
       <StyledNavigationBar>
         <HBox hAlign='center'>
-          <Logo logo={props.logo} onClick={() => history.push('/')}/>
+          <Logo logo={props.logo} onClick={() => history.push('/')} />
           <HBoxItem hAlign='center' vAlign='flex-end'>
             <StyledIcon clickable={true} source={Menu} onClick={toggleMenuOpen} />
           </HBoxItem>
         </HBox>
-        {openedMenu && <DropDownMenuNav menuItems={props.menuOptions} />}
+        {openedMenu && (!!context.token ? (
+          <DropDownMenuNav menuItems={props.authMenuOptions} />
+        ) : (
+          <DropDownMenuNav menuItems={props.menuOptions} />
+        ))}
       </StyledNavigationBar>
     </HBox>
   );

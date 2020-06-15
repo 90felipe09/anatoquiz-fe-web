@@ -1,5 +1,5 @@
 import { Root, HBox, VSeparator, HBoxItem, HBoxSeparator } from 'components/atomic/obj.grid.components';
-import React, { useState } from 'react';
+import React, { useState, useContext, useEffect } from 'react';
 import { NavigationBar, MenuOption } from 'components/atomic/org.navbar.component';
 import { BodyContent } from 'components/atomic/atm.wrapper.component';
 import {
@@ -15,11 +15,18 @@ import { StyledImage } from 'components/atomic/atm.image.component';
 import Handshake from 'assets/images/handshake.jpg';
 import Idea from 'assets/images/idea.jpg';
 import { styleguide } from 'components/styleguide';
+import { GlobalState } from 'app/components/global-state/global-state.provider';
 
 export interface HomePageProps {}
 
 export const HomePage: React.FC<HomePageProps> = props => {
   const history = useHistory();
+  const context = useContext(GlobalState);
+
+  useEffect(() => {
+    !!context.token && history.push('/menu');
+  }, []);
+
   return (
     <Root>
       <BodyContent>
@@ -40,7 +47,7 @@ export const HomePage: React.FC<HomePageProps> = props => {
         <HBox>
           <HBoxSeparator />
           <HBoxItem vAlign='center'>
-            <StyledImage src={Idea} width={styleguide.sizes.images}/>
+            <StyledImage src={Idea} width={styleguide.sizes.images} />
           </HBoxItem>
           <HBoxSeparator />
         </HBox>
@@ -53,7 +60,7 @@ export const HomePage: React.FC<HomePageProps> = props => {
         <HBox>
           <HBoxSeparator />
           <HBoxItem vAlign='center'>
-            <StyledImage src={Handshake} width={styleguide.sizes.images}/>
+            <StyledImage src={Handshake} width={styleguide.sizes.images} />
           </HBoxItem>
           <HBoxSeparator />
         </HBox>
@@ -68,5 +75,3 @@ export const HomePage: React.FC<HomePageProps> = props => {
     </Root>
   );
 };
-
-

@@ -2,10 +2,11 @@ import { H3, H4 } from 'components/atomic/atm.typography.styled';
 import { BodyContent } from 'components/atomic/atm.wrapper.component';
 import { HBox, HBoxItem, Root, VSeparator } from 'components/atomic/obj.grid.components';
 import { floor } from 'lodash';
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, useContext } from 'react';
 import { useHistory } from 'react-router';
 import { useRandom } from 'app/hooks/random.hook';
 import { RandomComponentPage } from './random.component';
+import { GlobalState } from 'app/components/global-state/global-state.provider';
 
 export interface RandomPageProps {}
 
@@ -38,6 +39,7 @@ export const RandomPage: React.FC<RandomPageProps> = props => {
   const [selectedCategory, selectCategory] = useState<string>('Cardiovascular');
   const [selecionando, setSelecionando] = useState<boolean>(true);
   const [countdown, setCountdown] = useState<number>(10);
+  const context = useContext(GlobalState);
 
   const history = useHistory();
 
@@ -56,6 +58,7 @@ export const RandomPage: React.FC<RandomPageProps> = props => {
 
   useEffect(() => {
     countdown >= 0 && setTimeout(handleIteration, TIME_TO_CHANGE);
+    !context.token && history.push('/');
   }, [selectedCategory, selecionando, countdown]);
 
   return <RandomComponentPage selecionando={selecionando} selectedCategory={selectedCategory} />;

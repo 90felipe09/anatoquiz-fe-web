@@ -1,5 +1,5 @@
 import { Root, HBox, VSeparator, HBoxItem } from 'components/atomic/obj.grid.components';
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useContext } from 'react';
 import { NavigationBar, MenuOption } from 'components/atomic/org.navbar.component';
 import { BodyContent } from 'components/atomic/atm.wrapper.component';
 import {
@@ -10,6 +10,7 @@ import {
 } from 'app/components/question-card-modules/question-cards-modules';
 import { PrimaryButton } from 'components/atomic/atm.buttons.component';
 import { useHistory } from 'react-router';
+import { GlobalState } from 'app/components/global-state/global-state.provider';
 
 const requestSimulator = {
   correctAnswer: 'Fascículo Cuneiforme',
@@ -41,6 +42,7 @@ export const QuestionPage: React.FC<QuestionPageProps> = props => {
   const [questions, setQuestions] = useState<QuestionPacketInterface>();
   const [currentQuestionIndex, setCurrentQuestionIndex] = useState(0);
   const [correctAlternative, setCorrectAlternative] = useState<string>();
+  const context = useContext(GlobalState);
 
   const history = useHistory();
 
@@ -68,7 +70,7 @@ export const QuestionPage: React.FC<QuestionPageProps> = props => {
   useEffect(() => {
     getQuestions().then(setQuestions);
     setSessionInitialized(true);
-    console.log('Effect');
+    !context.token && history.push('/');
   }, []);
 
   return (

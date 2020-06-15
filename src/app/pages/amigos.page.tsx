@@ -1,5 +1,5 @@
 import { Root, HBox, VSeparator, HBoxItem, HBoxSeparator } from 'components/atomic/obj.grid.components';
-import React, { useState } from 'react';
+import React, { useState, useContext, useEffect } from 'react';
 import { NavigationBar, MenuOption } from 'components/atomic/org.navbar.component';
 import { BodyContent, ScrollableContent, ListContent } from 'components/atomic/atm.wrapper.component';
 import {
@@ -16,6 +16,7 @@ import { StyledImage } from 'components/atomic/atm.image.component';
 import Avatar from 'assets/mock/Avatar.png';
 import { styleguide } from 'components/styleguide';
 import { ContactCardProps, ContactCard } from 'components/atomic/mol.contact-card.component';
+import { GlobalState } from 'app/components/global-state/global-state.provider';
 
 export interface AmigosPageProps {}
 
@@ -84,10 +85,13 @@ const contacts: ContactCardProps[] = [
 
 export const AmigosPage: React.FC<AmigosPageProps> = props => {
   const history = useHistory();
+  const context = useContext(GlobalState);
 
   const handleFriendSelection = (id: string) => {
     history.push('/category');
   };
+
+  useEffect(()=>{!context.token && history.push('/');},[]);
 
   return (
     <Root>

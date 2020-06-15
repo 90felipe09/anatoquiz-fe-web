@@ -1,5 +1,5 @@
 import { Root, HBox, VSeparator, HBoxItem, HBoxSeparator } from 'components/atomic/obj.grid.components';
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useContext } from 'react';
 import { NavigationBar, MenuOption } from 'components/atomic/org.navbar.component';
 import { BodyContent } from 'components/atomic/atm.wrapper.component';
 import {
@@ -15,17 +15,20 @@ import { CoinsBar } from 'components/atomic/mol.coins-bar.component';
 import { StyledImage } from 'components/atomic/atm.image.component';
 import Avatar from 'assets/mock/Avatar.png';
 import { styleguide } from 'components/styleguide';
+import { GlobalState } from 'app/components/global-state/global-state.provider';
 
 export interface DonePageProps {}
 
 export const DonePage: React.FC<DonePageProps> = props => {
   const history = useHistory();
   const [win, setWin] = useState<boolean>(false);
+  const context = useContext(GlobalState);
   const [reward, setReward] = useState<number>(0);
 
   useEffect(() => {
     setWin(true);
     setReward(90);
+    !context.token && history.push('/');
   }, []);
 
   return (

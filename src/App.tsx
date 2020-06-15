@@ -9,7 +9,7 @@ import { HomePage } from 'app/pages/home.page';
 import { MenuOption, NavigationBar } from 'components/atomic/org.navbar.component';
 import { Root, VSeparator, HBox, HBoxItem } from 'components/atomic/obj.grid.components';
 import { PrimaryButton } from 'components/atomic/atm.buttons.component';
-import { menuOptions } from 'app/components/menu-options/menu-options';
+import { menuOptions, authMenuOptions } from 'app/components/menu-options/menu-options';
 import { TreinoPage } from 'app/pages/treino.page';
 import { AmigosPage } from 'app/pages/amigos.page';
 import { CategoryPage } from 'app/pages/category.page';
@@ -18,25 +18,28 @@ import { CountdownPage } from 'app/pages/countdown.page';
 import { LevelSelectionPage } from 'app/pages/level-selection.page';
 import { WorldPage } from 'app/pages/world-selection.page';
 import { DonePage } from 'app/pages/done.page';
+import { GlobalState, defaultGlobalState } from 'app/components/global-state/global-state.provider';
 
 function App() {
   return (
     <Router>
-      <NavigationBar menuOptions={menuOptions} logo='ANATOQUIZ' />
-      <Switch>
-        <Route path='/done' component={DonePage} />
-        <Route path='/world' component={WorldPage} />
-        <Route path='/level' component={LevelSelectionPage} />
-        <Route path='/countdown' component={CountdownPage} />
-        <Route path='/random' component={RandomPage} />
-        <Route path='/category' component={CategoryPage} />
-        <Route path='/amigos' component={AmigosPage} />
-        <Route path='/treino' component={TreinoPage} />
-        <Route path='/menu' component={MenuPage} />
-        <Route path='/sobre' component={AboutPage} />
-        <Route path='/question' component={QuestionPage} />
-        <Route path='/' component={HomePage} />
-      </Switch>
+      <GlobalState.Provider value={defaultGlobalState}>
+        <NavigationBar authMenuOptions={authMenuOptions} menuOptions={menuOptions} logo='ANATOQUIZ' />
+        <Switch>
+          <Route path='/done' component={DonePage} />
+          <Route path='/world' component={WorldPage} />
+          <Route path='/level' component={LevelSelectionPage} />
+          <Route path='/countdown' component={CountdownPage} />
+          <Route path='/random' component={RandomPage} />
+          <Route path='/category' component={CategoryPage} />
+          <Route path='/amigos' component={AmigosPage} />
+          <Route path='/treino' component={TreinoPage} />
+          <Route path='/menu' component={MenuPage} />
+          <Route path='/sobre' component={AboutPage} />
+          <Route path='/question' component={QuestionPage} />
+          <Route path='/' component={HomePage} />
+        </Switch>
+      </GlobalState.Provider>
     </Router>
   );
 }
