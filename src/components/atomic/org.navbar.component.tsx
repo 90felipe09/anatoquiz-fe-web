@@ -1,6 +1,6 @@
 import Menu from 'assets/icon/Menu.png';
 import { styleguide } from 'components/styleguide';
-import React, { useState, useContext } from 'react';
+import React, { useState, useContext, useEffect } from 'react';
 import styled from 'styled-components';
 import { StyledIcon } from './atm.icon.components';
 import { Logo } from './atm.logo.component';
@@ -8,6 +8,7 @@ import { H2 } from './atm.typography.styled';
 import { HBox, HBoxItem, VBox } from './obj.grid.components';
 import { useHistory } from 'react-router-dom';
 import { GlobalState } from 'app/components/global-state/global-state.provider';
+import { logout } from 'data/auth.datasource';
 
 //Replicate to template
 
@@ -33,13 +34,27 @@ export const NavigationBar: React.FC<NavigationBarProps> = props => {
   const history = useHistory();
 
   const toggleMenuOpen = () => {
-    setOpenedMenu(!openedMenu);
+    const newValue = !openedMenu;
+    setOpenedMenu(newValue);
+    context.openedMenu = newValue;
   };
 
-  const logOut = () => {
+  const handleLogout = () => {
     context.token = '';
+    context.openedMenu = false;
+    history.push('/')
   }
-  
+
+  const logOut = () => {
+    logout({ token: context.token })
+      .then(handleLogout)
+      .catch(console.log);
+  };
+
+  useEffect(() => {
+    setOpenedMenu(context.openedMenu);
+  }, [context.openedMenu]);
+
   props.authMenuOptions[props.authMenuOptions.length - 1].onClick = logOut;
 
   return (
@@ -51,11 +66,12 @@ export const NavigationBar: React.FC<NavigationBarProps> = props => {
             <StyledIcon clickable={true} source={Menu} onClick={toggleMenuOpen} />
           </HBoxItem>
         </HBox>
-        {openedMenu && (!!context.token ? (
-          <DropDownMenuNav menuItems={props.authMenuOptions} />
-        ) : (
-          <DropDownMenuNav menuItems={props.menuOptions} />
-        ))}
+        {openedMenu &&
+          (!!context.token ? (
+            <DropDownMenuNav menuItems={props.authMenuOptions} />
+          ) : (
+            <DropDownMenuNav menuItems={props.menuOptions} />
+          ))}
       </StyledNavigationBar>
     </HBox>
   );

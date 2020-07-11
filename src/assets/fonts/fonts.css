@@ -24,7 +24,7 @@
 
 @font-face {
   font-family: 'Spartan';
-  src: url('./Spartan/Spartan-VariableFont:wght.ttf') format('truetype');
+  src: url('./Spartan/static/Spartan-Medium.ttf') format('truetype');
   font-weight: normal;
   font-style: normal;
   font-display: fallback;

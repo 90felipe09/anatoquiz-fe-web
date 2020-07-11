@@ -19,6 +19,14 @@ import { LevelSelectionPage } from 'app/pages/level-selection.page';
 import { WorldPage } from 'app/pages/world-selection.page';
 import { DonePage } from 'app/pages/done.page';
 import { GlobalState, defaultGlobalState } from 'app/components/global-state/global-state.provider';
+import { LoginPage } from 'app/pages/login.page';
+import { CreateAccountPage } from 'app/pages/create-account.page';
+import { ForgotPasswordPage } from 'app/pages/forgot-password.page';
+import { HowToRecoverPasswordPage } from 'app/pages/guide-to-password-recovery.page';
+import { PasswordRedefinitionPage } from 'app/pages/password-redefinition.page';
+import { CheckYourEmailPage } from 'app/pages/check-your-email.page';
+import { AccountValidationPage } from 'app/pages/account-validation.page';
+
 
 function App() {
   return (
@@ -26,6 +34,13 @@ function App() {
       <GlobalState.Provider value={defaultGlobalState}>
         <NavigationBar authMenuOptions={authMenuOptions} menuOptions={menuOptions} logo='ANATOQUIZ' />
         <Switch>
+          <Route path='/check-your-email' component={CheckYourEmailPage} />
+          <Route path='/validate-account/:token' component={AccountValidationPage} />
+          <Route path='/password-change/:token' component={PasswordRedefinitionPage} />
+          <Route path='/how-to-recover-password' component={HowToRecoverPasswordPage} />
+          <Route path='/login' component={LoginPage} />
+          <Route path='/create-account' component={CreateAccountPage} />
+          <Route path='/forgot-password' component={ForgotPasswordPage} />
           <Route path='/done' component={DonePage} />
           <Route path='/world' component={WorldPage} />
           <Route path='/level' component={LevelSelectionPage} />

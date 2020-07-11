@@ -2,6 +2,7 @@ import React from 'react';
 import { PrimaryButton } from './atm.buttons.component';
 import { TextFormInput, TextInputInterface } from './mol.forms-input.component';
 import { HBox, HBoxItem, Root } from './obj.grid.components';
+import sha256 from 'sha256';
 
 export interface FormsInterface {
   types: TextInputInterface[];
@@ -27,7 +28,7 @@ export const Forms: React.FC<FormsInterface> = props => {
   const listInputForms = props.types.map(type => (
     <HBox>
       <HBoxItem>
-        <TextFormInput type={type.type} label={type.label} value={type.value} dispatcher={type.dispatcher} />
+        <TextFormInput type={type.type} label={type.label} value={type.value} dispatcher={type.dispatcher} forgot={type.forgot}/>
       </HBoxItem>
     </HBox>
   ));
