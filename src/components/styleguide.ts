@@ -8,7 +8,7 @@ export const styleguide = {
     H1: '24px',
     H2: '18px',
     H3: '18px',
-    H4: '18px',
+    H4: '24px',
     H5: '18px',
 
     Body: '14px',
@@ -24,10 +24,10 @@ export const styleguide = {
   },
 
   colors: {
-    primary: '#76BC1C',
+    primary: '#133E79',
     secondary: '#57A8FF',
     decorative: '#032B55',
-    callToAction: '#76BC1C',
+    callToAction: '#133E79',
 
     unavailable: '#B6B6B6',
     occupied: 'rgba(229,0,0,0.5)',
@@ -58,11 +58,21 @@ export const styleguide = {
   },
 
   sizes: {
+    NavBar: '64px',
     timeBox: '84px',
     timeBoxMiniature: '42px',
     profilePhoto: '96px',
     modalWidth: '256px',
-    iconSize: '62px',
+    iconSize: 42,
+    contactPhoto: '64px',
+    feedbackIconSize: '84px',
+    questionCardWidth: '320px',
+    buttonHeight: '42px;',
+    ContentHeight: '240px',
+    images: '120px',
+    avatar: '160px',
+    progressStatus: '48px',
+    progressFrame: '64px'
   },
 
   borderRadius: '4px',

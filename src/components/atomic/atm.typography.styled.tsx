@@ -2,6 +2,7 @@ import styled from 'styled-components';
 import { styleguide } from '../styleguide';
 
 export const H1 = styled.h1`
+  margin: 0;
   font-size: ${styleguide.typography.H1};
   font-family: ${styleguide.fonts.primary};
   font-weight: normal;
@@ -22,8 +23,7 @@ export const H3 = styled.h3`
 export const H4 = styled.h4`
   font-size: ${styleguide.typography.H4};
   font-family: ${styleguide.fonts.primary};
-  text-transform: uppercase;
-  color: ${styleguide.colors.secondary};
+  color: ${styleguide.colors.primary};
 `;
 
 export const H5 = styled.h5`
@@ -61,7 +61,7 @@ export const HeaderLabel = styled.p`
   color: ${styleguide.colors.white};
   font-weight: bold;
   flex: 1;
-  display:flex;
+  display: flex;
   justify-content: center;
   align-content: center;
 `;
@@ -70,6 +70,13 @@ export const InputLabel = styled.p`
   font-size: ${styleguide.typography.InputLabel};
   font-family: ${styleguide.fonts.primary};
   font-weight: bold;
+`;
+
+export const ErrorMessage = styled.p`
+  font-size: ${styleguide.typography.InputLabel};
+  font-family: ${styleguide.fonts.primary};
+  font-weight: bold;
+  color: ${styleguide.colors.error}
 `;
 
 export const InputValue = styled.p`
@@ -90,4 +97,15 @@ export const TimeValue = styled.p`
   font-family: ${styleguide.fonts.primary};
   color: ${props => props.color};
   font-weight: normal;
+`;
+
+export const LinkText = styled.p`
+  font-size: ${styleguide.typography.Body};
+  font-family: ${styleguide.fonts.primary};
+  color: ${styleguide.colors.callToAction};
+  font-weight: bold;
+  :hover {
+    cursor: pointer;
+    color: ${styleguide.colors.secondary};
+  }
 `;

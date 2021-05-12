@@ -8,10 +8,12 @@ export interface ButtonInterface {
   disabled?: boolean;
 }
 
+
 const StyledPrimaryButton = styled.button`
   outline: 0;
   flex: 1;
   flex-direction: row;
+  border-radius: ${styleguide.spacing.small};
   align-self: center;
   background-color: ${styleguide.colors.callToAction};
   color: ${styleguide.colors.white};
@@ -20,8 +22,10 @@ const StyledPrimaryButton = styled.button`
   font-weight: bold;
   font-size: ${styleguide.typography.InputLabel};
   padding: ${styleguide.spacing.small};
+  height: ${styleguide.sizes.buttonHeight};
   border: none;
-  margin: ${styleguide.spacing.small};
+  margin: ${styleguide.spacing.xSmall};
+  /* margin: ${styleguide.spacing.small}; */
   :hover {
     cursor: pointer;
   }
@@ -89,14 +93,13 @@ const StyledTextButton = styled.button`
   flex: 1;
   flex-direction: row;
   align-self: center;
-  background-color: ${styleguide.colors.white};
+  background-color: rgba(0,0,0,0);
   :hover {
-    background-color: ${styleguide.colors.xLightGray};
+    background-color: rgba(0,0,0,0.2);
     cursor: pointer;
   }
-  color: ${styleguide.colors.secondary};
+  color: ${styleguide.colors.white};
   font-family: ${styleguide.fonts.secondary};
-  border-radius: ${styleguide.borderRadius};
   border: none;
   text-transform: uppercase;
   font-weight: bold;
